@@ -62,7 +62,7 @@ void relay_off(int n){
   }
 }
 
-bool relay_status(int n){
+bool get_relay_status(int n){
   switch (n) {
     case 1:
       return relay_status[0];
@@ -75,6 +75,9 @@ bool relay_status(int n){
       break;
     case 4:
       return relay_status[3];
+      break;
+    default:
+      return false;
       break;
   }
 }
