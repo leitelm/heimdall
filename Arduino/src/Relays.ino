@@ -28,15 +28,15 @@ void relay_on(int n){
       break;
     case 2:
       digitalWrite(relay_pin[1], LOW);
-      relay_status[0] = true;
+      relay_status[1] = true;
       break;
     case 3:
       digitalWrite(relay_pin[2], LOW);
-      relay_status[0] = true;
+      relay_status[2] = true;
       break;
     case 4:
       digitalWrite(relay_pin[3], LOW);
-      relay_status[0] = true;
+      relay_status[3] = true;
       break;
   }
 }
@@ -49,15 +49,32 @@ void relay_off(int n){
       break;
     case 2:
       digitalWrite(relay_pin[1], HIGH);
-      relay_status[0] = false;
+      relay_status[1] = false;
       break;
     case 3:
       digitalWrite(relay_pin[2], HIGH);
-      relay_status[0] = false;
+      relay_status[2] = false;
       break;
     case 4:
       digitalWrite(relay_pin[3], HIGH);
-      relay_status[0] = false;
+      relay_status[3] = false;
+      break;
+  }
+}
+
+bool relay_status(int n){
+  switch (n) {
+    case 1:
+      return relay_status[0];
+      break;
+    case 2:
+      return relay_status[1];
+      break;
+    case 3:
+      return relay_status[2];
+      break;
+    case 4:
+      return relay_status[3];
       break;
   }
 }
