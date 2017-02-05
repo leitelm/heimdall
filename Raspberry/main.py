@@ -26,10 +26,12 @@ while not joy.Back():
     if(joy.rightY() == 0):
     	arduino.write(stop)
     	print 's'
-   	if(joy.rightY() < 0):
-   		arduino.write(reverse)
-   		print 'r'
-    time.sleep(0.1)
+    if(joy.rightY() < 0):
+    	arduino.write(reverse)
+    	print 'r'
+   	time.sleep(0.1)
+
+
 joy.close()
 
     # # Left analog stick
