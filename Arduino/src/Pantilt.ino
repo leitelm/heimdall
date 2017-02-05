@@ -30,15 +30,10 @@ void pantilt_setup() {
 
   phiServo.attach(phi_pin);
   phiServo.write(phi);
-
-  Serial.begin(9600);
 }
 
 void pantilt_loop() {
   update_servos();
-  Serial.print(ro);
-  Serial.print(" ");
-  Serial.println(phi);
 }
 
 // Update servos

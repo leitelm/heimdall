@@ -46,7 +46,17 @@ down_phi = 'w'
 
 print "starting heimdall app"
 
+command = ""
+
+def send_data(data):
+    global command
+    if (data!=command):
+        arduino.write(data)
+        print(data)
+        command=data
+
 while not joy.Back():
+
     # Show connection status
     if joy.connected():
         print "Connected   ",
@@ -55,74 +65,67 @@ while not joy.Back():
 
     # Right
     if (joy.rightX() > 0):
-        arduino.write(right)
-        print right
+        send_data(right)
     # Left
     elif (joy.rightX() < 0):
-        arduino.write(left)
-        print left
+        send_data(left)
     # Forward
     elif (joy.rightY() > 0):
-        arduino.write(fwd)
-        print fwd
+        send_data(fwd)
     # Backward
     elif (joy.rightY() < 0):
-        arduino.write(back)
-        print back
+        send_data(back)
     # Stop
     elif (joy.rightY() == 0):
-        arduino.write(stop)
-        print stop
-    
-    time.sleep(0.1)
-
-    # Ro up
-    if (joy.leftX() > 0):
-        arduino.write(up_ro)
-        time.sleep(0.1)
-        print up_ro
-    # Ro down
-    elif (joy.leftX() < 0):
-        arduino.write(down_ro)
-        time.sleep(0.1)
-        print down_ro
-    # Phi Up
-    elif (joy.leftY() > 0):
-        arduino.write(up_phi)
-        time.sleep(0.1)
-        print up_phi
-    # Phi down
-    elif (joy.leftY() < 0):
-        arduino.write(down_phi)
-        time.sleep(0.1)
-        print down_phi
-
-
-    if joy.dpadUp():
-        arduino.write(r1_on)
-        time.sleep(0.1)
-    if joy.dpadDown():
-        arduino.write(r2_on)
-        time.sleep(0.1)
-    if joy.dpadRight():
-        arduino.write(r3_on)
-        time.sleep(0.1)
-    if joy.dpadLeft():
-        arduino.write(r4_on)
-        time.sleep(0.1)
-
-    if joy.Y():
-        arduino.write(r1_off)
-        time.sleep(0.1)
-    if joy.A():
-        arduino.write(r2_off)
-        time.sleep(0.1)
-    if joy.B():
-        arduino.write(r3_off)
-        time.sleep(0.1)
-    if joy.X():
-        arduino.write(r4_off)
-        time.sleep(0.1)
+        send_data(stop)
+    #
+    # # Ro up
+    # if (joy.leftX() > 0):
+    #     arduino.write(up_ro)
+    #     time.sleep(0.1)
+    #     print up_ro
+    # # Ro down
+    # elif (joy.leftX() < 0):
+    #     arduino.write(down_ro)
+    #     time.sleep(0.1)
+    #     print down_ro
+    # # Phi Up
+    # elif (joy.leftY() > 0):
+    #     arduino.write(up_phi)
+    #     time.sleep(0.1)
+    #     print up_phi
+    # # Phi down
+    # elif (joy.leftY() < 0):
+    #     arduino.write(down_phi)
+    #     time.sleep(0.1)
+    #     print down_phi
+    #
+    #
+    # if joy.dpadUp():
+    #     arduino.write(r1_on)
+    #     time.sleep(0.1)
+    # if joy.dpadDown():
+    #     arduino.write(r2_on)
+    #     time.sleep(0.1)
+    # if joy.dpadRight():
+    #     arduino.write(r3_on)
+    #     time.sleep(0.1)
+    # if joy.dpadLeft():
+    #     arduino.write(r4_on)
+    #     time.sleep(0.1)
+    #
+    # if joy.Y():
+    #     arduino.write(r1_off)
+    #     time.sleep(0.1)
+    # if joy.A():
+    #     arduino.write(r2_off)
+    #     time.sleep(0.1)
+    # if joy.B():
+    #     arduino.write(r3_off)
+    #     time.sleep(0.1)
+    # if joy.X():
+    #     arduino.write(r4_off)
+    #     time.sleep(0.1)
 joy.close()
 
 # # Left analog stick
