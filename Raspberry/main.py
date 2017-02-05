@@ -2,32 +2,35 @@
 import serial, time, xbox
 
 def fmtFloat(n):
-    return '{:6.3f}'.format(n)
-    
-joy = xbox.Joystick()
+	return '{:6.3f}'.format(n)
 
-# arduino = serial.Serial('/dev/ttyACM0', 115200)
+	joy = xbox.Joystick()
 
-print "starting heimdall app"
+	arduino = serial.Serial('/dev/ttyACM0', 115200)
+	fwd = 'f'
+	stop = 's'
+	reverse = 'r'
 
-while not joy.Back():
+	print "starting heimdall app"
+
+	while not joy.Back():
     # Show connection status
     if joy.connected():
-        print "Connected   ",
+    	print "Connected   ",
     else:
-        print "Disconnected",
-    print 'X:', joy.rightX()
-    print 'Y:', joy.rightY()
+    	print "Disconnected",
 
-    if(joy.rightY() > 0):
-    	# arduino.write('f')
-    	pass
-    if(joy.rightY() == 0):
-    	# arduino.write('s')
-    	pass
-    if(joy.rightY() < 0):
-    	# arduino.write('r')
-    	pass
+    	if(joy.rightY() > 0):
+    		arduino.write(fwd)
+    		print 'f'
+    	if(joy.rightY() == 0):
+    		arduino.write(stop)
+    		print 's'
+    	if(joy.rightY() < 0):
+    		arduino.write(reverse)
+    		print 'r'
+    		time.sleep(0.1)
+
 
 joy.close()
 
@@ -72,4 +75,3 @@ joy.close()
     #     print "R",
     # else:
     #     print " ",
-        
