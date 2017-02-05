@@ -32,8 +32,8 @@ int get_current_m2(){
 void test_ponteh(){
   motor1(200);
   motor2(200);
-  delay(2000);
+  delay(3000);
   motor1(-200);
   motor2(-200);
-  delay(2000);
+  delay(3000);
 }
