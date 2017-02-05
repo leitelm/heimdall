@@ -48,12 +48,14 @@ print "starting heimdall app"
 
 command = ""
 
+
 def send_data(data):
     global command
-    if (data!=command):
+    if (data != command):
         arduino.write(data)
         print(data)
-        command=data
+        command = data
+
 
 while not joy.Back():
 
@@ -78,54 +80,37 @@ while not joy.Back():
     # Stop
     elif (joy.rightY() == 0):
         send_data(stop)
-    #
-    # # Ro up
-    # if (joy.leftX() > 0):
-    #     arduino.write(up_ro)
-    #     time.sleep(0.1)
-    #     print up_ro
-    # # Ro down
-    # elif (joy.leftX() < 0):
-    #     arduino.write(down_ro)
-    #     time.sleep(0.1)
-    #     print down_ro
-    # # Phi Up
-    # elif (joy.leftY() > 0):
-    #     arduino.write(up_phi)
-    #     time.sleep(0.1)
-    #     print up_phi
-    # # Phi down
-    # elif (joy.leftY() < 0):
-    #     arduino.write(down_phi)
-    #     time.sleep(0.1)
-    #     print down_phi
-    #
-    #
-    # if joy.dpadUp():
-    #     arduino.write(r1_on)
-    #     time.sleep(0.1)
-    # if joy.dpadDown():
-    #     arduino.write(r2_on)
-    #     time.sleep(0.1)
-    # if joy.dpadRight():
-    #     arduino.write(r3_on)
-    #     time.sleep(0.1)
-    # if joy.dpadLeft():
-    #     arduino.write(r4_on)
-    #     time.sleep(0.1)
-    #
-    # if joy.Y():
-    #     arduino.write(r1_off)
-    #     time.sleep(0.1)
-    # if joy.A():
-    #     arduino.write(r2_off)
-    #     time.sleep(0.1)
-    # if joy.B():
-    #     arduino.write(r3_off)
-    #     time.sleep(0.1)
-    # if joy.X():
-    #     arduino.write(r4_off)
-    #     time.sleep(0.1)
+
+    # Ro up
+    if (joy.leftX() > 0):
+        send_data(up_ro)
+    # Ro down
+    elif (joy.leftX() < 0):
+        send_data(down_ro)
+    # Phi Up
+    elif (joy.leftY() > 0):
+        send_data(up_phi)
+    # Phi down
+    elif (joy.leftY() < 0):
+        send_data(down_phi)
+
+    if joy.dpadUp():
+        send_data(r1_on)
+    if joy.dpadDown():
+        send_data(r2_on)
+    if joy.dpadRight():
+        send_data(r3_on)
+    if joy.dpadLeft():
+        send_data(r4_on)
+
+    if joy.Y():
+        send_data(r1_off)
+    if joy.A():
+        send_data(r2_off)
+    if joy.B():
+        send_data(r3_off)
+    if joy.X():
+        send_data(r4_off)
 joy.close()
 
 # # Left analog stick
