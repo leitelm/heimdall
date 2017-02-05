@@ -8,6 +8,36 @@ void ponteh_setup(){
   motor.init();
 }
 
+void forward(){
+  velocity1 = 200;
+  velocity2 = 200;
+  Serial.println('f');
+}
+
+void left(){
+  velocity1 = -200;
+  velocity2 = 200;
+  Serial.println('l');
+}
+
+void right(){
+  velocity1 = 200;
+  velocity2 = -200;
+  Serial.println('r');
+}
+
+void backwards(){
+  velocity1 = -200;
+  velocity2 = -200;
+  Serial.println('r');
+}
+
+void stop(){
+  velocity1 = 0;
+  velocity2 = 0;
+  Serial.println('s');
+}
+
 void ponteh_loop(){
   motor1(velocity1);
   motor2(velocity2);

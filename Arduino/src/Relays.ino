@@ -1,4 +1,4 @@
-int relay_pin[] = {3,2,5,4};
+int relay_pin[] = {50,51,52,53};
 bool relay_status[] = {false,false,false,false};
 
 void relay_setup(){
