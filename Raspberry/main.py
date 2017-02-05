@@ -73,6 +73,8 @@ while not joy.Back():
     elif (joy.rightY() == 0):
         arduino.write(stop)
         print stop
+    
+    time.sleep(0.1)
 
     # Ro up
     if (joy.leftX() > 0):
@@ -121,11 +123,8 @@ while not joy.Back():
     if joy.X():
         arduino.write(r4_off)
         time.sleep(0.1)
-
-
-
 joy.close()
-#
+
 # # Left analog stick
 # print "Lx,Ly ",fmtFloat(joy.leftX()),fmtFloat(joy.leftY()),
 # print "Rx,Ry ",fmtFloat(joy.rightX()),fmtFloat(joy.rightY()),
