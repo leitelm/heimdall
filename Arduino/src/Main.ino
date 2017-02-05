@@ -1,15 +1,14 @@
-//Esse arquivo chama as funções de setup e loop de cada módulo.
-
+int velocity1=0;
+int velocity2=0;
 void setup(){
-  // relay_setup();
-  // frontled_setup();
+  serial_setup();
   pantilt_setup();
-  joystick_setup();
+  ponteh_setup();
+  
 }
 
 void loop(){
-  // relay_loop();
-  // frontled_loop();
+  serial_loop();
+  ponteh_loop();
   pantilt_loop();
-  joystick_loop();
 }
